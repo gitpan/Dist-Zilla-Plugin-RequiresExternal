@@ -1,0 +1,43 @@
+NAME
+    Dist::Zilla::Plugin::RequiresExternal - make dists require external
+    commands
+
+VERSION
+    version 0.001091
+
+SYNOPSIS
+    In your dist.ini:
+
+        [RequiresExternal]
+        requires = /path/to/some/executable
+        requires = executable_in_path
+
+DESCRIPTION
+    This Dist::Zilla plugin creates a test in your distribution to check for
+    the existence of executable commands you require.
+
+ATTRIBUTES
+  requires
+    Each "requires" attribute should be either a full path to an executable
+    or the name of a command in the user's "PATH" environment.
+
+METHODS
+  gather_files
+    Adds a t/requires_external.t test script to the distribution that checks
+    if each "requires" item is executable. Required by
+    Dist::Zilla::Role::FileGatherer.
+
+  metadata
+    Using this plugin will add the Env::Path to your distribution's testing
+    prerequisites, since it uses that module to look for executables in the
+    user's "PATH".
+
+AUTHOR
+    Mark Gardner <mjgardner@cpan.org>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2011 by Mark Gardner.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
