@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package Dist::Zilla::Plugin::RequiresExternal;
 
 BEGIN {
-    $Dist::Zilla::Plugin::RequiresExternal::VERSION = '0.001091';
+    $Dist::Zilla::Plugin::RequiresExternal::VERSION = '0.1091005';
 }
 
 # ABSTRACT: make dists require external commands
@@ -79,7 +79,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 =head1 VERSION
 
-version 0.001091
+version 0.1091005
 
 =head1 SYNOPSIS
 
@@ -98,27 +98,41 @@ to check for the existence of executable commands you require.
 
 =head2 requires
 
-Each C<requires> attribute should be either a full path to an executable or
-the name of a command in the user's C<PATH> environment.
+Each C<requires> attribute should be either an absolute path to an executable
+or the name of a command in the user's C<PATH> environment.  Multiple
+C<requires> lines are allowed.
+
+Example from a F<dist.ini> file:
+
+    [RequiresExternal]
+    requires = sqlplus
+    requires = /usr/bin/java
+
+This will require the program C<sqlplus> to be available somewhere in the
+user's C<PATH> and the program C<java> specifically in F</usr/bin>.
 
 =head1 METHODS
 
 =head2 gather_files
 
-Adds a F<t/requires_external.t> test script to the distribution that checks
+Adds a F<t/requires_external.t> test script to your distribution that checks
 if each L</requires> item is executable.
-Required by
-L<Dist::Zilla::Role::FileGatherer|Dist::Zilla::Role::FileGatherer>.
 
 =head2 metadata
 
-Using this plugin will add the L<Env::Path|Env::Path> to your distribution's
-testing prerequisites, since it uses that module to look for executables in
-the user's C<PATH>.
+Using this plugin will add L<Env::Path|Env::Path> to your distribution's
+testing prerequisites since the F<t/requires_external.t> script uses that
+module to look for executables in the user's C<PATH>.
 
 =encoding utf8
 
 =for Pod::Coverage mvp_multivalue_args
+
+=head1 SEE ALSO
+
+This module was indirectly inspired by
+L<Module::Install::External's requires_external_bin|Module::Install::External/requires_external_bin>
+command.
 
 =head1 AUTHOR
 

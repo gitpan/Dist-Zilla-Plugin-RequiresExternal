@@ -40,4 +40,4 @@ requires:
 resources:
   bugtracker: http://github.com/mjg/Dist-Zilla-Plugin-RequiresExternal/issues
   repository: git://github.com/mjg/Dist-Zilla-Plugin-RequiresExternal.git
-version: 0.001091
+version: 0.1091005
