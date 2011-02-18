@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package Dist::Zilla::Plugin::RequiresExternal;
 
 BEGIN {
-    $Dist::Zilla::Plugin::RequiresExternal::VERSION = '0.1091005002';
+    $Dist::Zilla::Plugin::RequiresExternal::VERSION = '0.1091005002002';
 }
 
 # ABSTRACT: make dists require external commands
@@ -105,7 +105,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 =head1 VERSION
 
-version 0.1091005002
+version 0.1091005002002
 
 =head1 SYNOPSIS
 
@@ -140,7 +140,7 @@ user's C<PATH> and the program C<java> specifically in F</usr/bin>.
 =head2 fatal
 
 Boolean value to determine if a failed test will immediately stop testing.
-It also causes the test name to change to <t/000-requires_external.t> so that
+It also causes the test name to change to F<t/000-requires_external.t> so that
 it runs earlier.
 Defaults to false.
 
