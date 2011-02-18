@@ -3,7 +3,7 @@ NAME
     commands
 
 VERSION
-    version 0.1091005
+    version 0.1091005002
 
 SYNOPSIS
     In your dist.ini:
@@ -31,15 +31,20 @@ ATTRIBUTES
     This will require the program "sqlplus" to be available somewhere in the
     user's "PATH" and the program "java" specifically in /usr/bin.
 
+  fatal
+    Boolean value to determine if a failed test will immediately stop
+    testing. It also causes the test name to change to
+    <t/000-requires_external.t> so that it runs earlier. Defaults to false.
+
 METHODS
   gather_files
     Adds a t/requires_external.t test script to your distribution that
     checks if each "requires" item is executable.
 
   metadata
-    Using this plugin will add Env::Path to your distribution's testing
-    prerequisites since the t/requires_external.t script uses that module to
-    look for executables in the user's "PATH".
+    Using this plugin will add Test::Most and Env::Path to your
+    distribution's testing prerequisites since the generated script uses
+    those modules.
 
 SEE ALSO
     This module was indirectly inspired by Module::Install::External's

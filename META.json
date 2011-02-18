@@ -34,6 +34,7 @@
             "MooseX::Has::Sugar" : 0,
             "MooseX::Types::Moose" : 0,
             "Path::Class" : 0,
+            "Test::Most" : 0,
             "namespace::autoclean" : 0,
             "utf8" : 0
          }
@@ -63,6 +64,6 @@
          "web" : "http://github.com/mjg/Dist-Zilla-Plugin-RequiresExternal"
       }
    },
-   "version" : "0.1091005"
+   "version" : "0.1091005002"
 }
 

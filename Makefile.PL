@@ -43,10 +43,11 @@ my %WriteMakefileArgs = (
     'MooseX::Has::Sugar' => '0',
     'MooseX::Types::Moose' => '0',
     'Path::Class' => '0',
+    'Test::Most' => '0',
     'namespace::autoclean' => '0',
     'utf8' => '0'
   },
-  'VERSION' => '0.1091005',
+  'VERSION' => '0.1091005002',
   'test' => {
     'TESTS' => 't/*.t'
   }
