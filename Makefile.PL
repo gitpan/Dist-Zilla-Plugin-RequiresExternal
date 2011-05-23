@@ -2,9 +2,9 @@
 use strict;
 use warnings;
 
+BEGIN { require 5.010; }
 
-
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -23,7 +23,7 @@ my %WriteMakefileArgs = (
     'perl' => '5.004'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'Dist-Zilla-Plugin-RequiresExternal',
   'EXE_FILES' => [],
@@ -47,7 +47,7 @@ my %WriteMakefileArgs = (
     'namespace::autoclean' => '0',
     'utf8' => '0'
   },
-  'VERSION' => '1.000',
+  'VERSION' => '1.001',
   'test' => {
     'TESTS' => 't/*.t'
   }

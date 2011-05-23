@@ -20,6 +20,6 @@ BEGIN {
 
 use Test::More;
 
-eval "use Test::Kwalitee";
-plan skip_all => "Test::Kwalitee required for testing kwalitee"
-    if $@;
+eval "use Test::CPAN::Meta";
+plan skip_all => "Test::CPAN::Meta required for testing META.yml" if $@;
+meta_yaml_ok();

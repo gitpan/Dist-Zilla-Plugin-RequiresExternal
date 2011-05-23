@@ -4,7 +4,7 @@
       "Mark Gardner <mjgardner@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200004, CPAN::Meta::Converter version 2.110440",
+   "generated_by" : "Dist::Zilla version 4.200006, CPAN::Meta::Converter version 2.110930",
    "license" : [
       "perl_5"
    ],
@@ -16,7 +16,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.31"
+            "ExtUtils::MakeMaker" : "6.30"
          }
       },
       "runtime" : {
@@ -36,6 +36,7 @@
             "Path::Class" : 0,
             "Test::Most" : 0,
             "namespace::autoclean" : 0,
+            "perl" : "5.010",
             "utf8" : 0
          }
       },
@@ -56,14 +57,15 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "http://github.com/mjg/Dist-Zilla-Plugin-RequiresExternal/issues"
+         "web" : "https://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal/issues"
       },
+      "homepage" : "http://search.cpan.org/dist/Dist-Zilla-Plugin-RequiresExternal/",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/mjg/Dist-Zilla-Plugin-RequiresExternal.git",
-         "web" : "http://github.com/mjg/Dist-Zilla-Plugin-RequiresExternal"
+         "url" : "git://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal.git",
+         "web" : "https://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal"
       }
    },
-   "version" : "1.000"
+   "version" : "1.001"
 }
 

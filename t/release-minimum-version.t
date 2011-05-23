@@ -20,6 +20,7 @@ BEGIN {
 
 use Test::More;
 
-eval "use Test::Kwalitee";
-plan skip_all => "Test::Kwalitee required for testing kwalitee"
+eval "use Test::MinimumVersion";
+plan skip_all => "Test::MinimumVersion required for testing minimum versions"
     if $@;
+all_minimum_version_from_metayml_ok();

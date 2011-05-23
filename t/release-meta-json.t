@@ -19,7 +19,7 @@ BEGIN {
 }
 
 use Test::More;
-
-eval "use Test::Kwalitee";
-plan skip_all => "Test::Kwalitee required for testing kwalitee"
+eval 'use Test::CPAN::Meta::JSON';
+plan skip_all => 'Test::CPAN::Meta::JSON required for testing META.json'
     if $@;
+meta_json_ok();

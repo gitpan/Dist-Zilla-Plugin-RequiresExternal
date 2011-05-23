@@ -20,6 +20,7 @@ BEGIN {
 
 use Test::More;
 
-eval "use Test::Kwalitee";
-plan skip_all => "Test::Kwalitee required for testing kwalitee"
+eval "use Test::DistManifest";
+plan skip_all => "Test::DistManifest required for testing the manifest"
     if $@;
+manifest_ok();

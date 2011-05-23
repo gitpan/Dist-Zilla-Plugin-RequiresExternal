@@ -20,6 +20,7 @@ BEGIN {
 
 use Test::More;
 
-eval "use Test::Kwalitee";
-plan skip_all => "Test::Kwalitee required for testing kwalitee"
+eval "use Test::Vars";
+plan skip_all => "Test::Vars required for testing unused vars"
     if $@;
+all_vars_ok();

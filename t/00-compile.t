@@ -2,7 +2,7 @@
 #
 # This file is part of Dist-Zilla-Plugin-RequiresExternal
 #
-# This software is copyright (c) 2011 by Mark Gardner.
+# This software is copyright (c) 2011 by GSI Commerce.
 #
 # This is free software; you can redistribute it and/or modify it under
 # the same terms as the Perl 5 programming language system itself.
@@ -10,18 +10,12 @@
 use utf8;
 use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
-=encoding utf8
-
-=cut
-
 use strict;
 use warnings;
 
 use Test::More;
 
-
-
-    use File::Find;
+use File::Find;
 use File::Temp qw{ tempdir };
 
 my @modules;
@@ -32,12 +26,26 @@ find(
         $found =~ s{^lib/}{};
         $found =~ s{[/\\]}{::}g;
         $found =~ s/\.pm$//;
-        # nothing to skip push @modules, $found;
+
+        # nothing to skip
+        push @modules, $found;
     },
     'lib',
 );
 
-my @scripts = glob "bin/*";
+my @scripts;
+if ( -d 'bin' ) {
+    find(
+        sub {
+            return unless -f;
+            my $found = $File::Find::name;
+
+            # nothing to skip
+            push @scripts, $found;
+        },
+        'bin',
+    );
+}
 
 my $plan = scalar(@modules) + scalar(@scripts);
 $plan ? ( plan tests => $plan ) : ( plan skip_all => "no tests to run" );

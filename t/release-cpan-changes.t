@@ -19,7 +19,7 @@ BEGIN {
 }
 
 use Test::More;
-
-eval "use Test::Kwalitee";
-plan skip_all => "Test::Kwalitee required for testing kwalitee"
-    if $@;
+eval 'use Test::CPAN::Changes';
+plan skip_all => 'Test::CPAN::Changes required for this test' if $@;
+changes_ok();
+done_testing();
