@@ -1,25 +1,13 @@
-#
-# This file is part of Dist-Zilla-Plugin-RequiresExternal
-#
-# This software is copyright (c) 2011 by GSI Commerce.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
-use utf8;
-use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
-
 package Dist::Zilla::Plugin::RequiresExternal;
 
-BEGIN {
-    $Dist::Zilla::Plugin::RequiresExternal::VERSION = '1.001';
-}
+use utf8;
+use Modern::Perl;
 
-# ABSTRACT: make dists require external commands
+our $VERSION = '1.002';    # VERSION
 
 use English '-no_match_vars';
 use Moose;
-use MooseX::Types::Moose qw(ArrayRef Bool Str);
+use MooseX::Types::Moose qw(ArrayRef Bool Maybe Str);
 use MooseX::Has::Sugar;
 use Dist::Zilla::File::InMemory;
 use List::MoreUtils 'part';
@@ -34,17 +22,17 @@ with qw(
 
 sub mvp_multivalue_args { return 'requires' }
 
-has _requires => ( ro, lazy, auto_deref,
-    isa => ArrayRef [Str],
+has _requires => ( ro, lazy,
+    isa => Maybe [ ArrayRef [Str] ],
     init_arg => 'requires',
     default  => sub { [] },
 );
 
-has fatal => ( ro, required, isa => Bool, default => 0 );
+has fatal => ( ro, required, isa => Maybe [Bool], default => 0 );
 
 sub gather_files {
     my $self     = shift;
-    my @requires = part { file($ARG)->is_absolute() } $self->_requires;
+    my @requires = part { file($ARG)->is_absolute() } @{ $self->_requires };
     my $template = <<'END_TEMPLATE';
 #!perl
 
@@ -72,8 +60,8 @@ END_TEMPLATE
             ),
             content => $self->fill_in_string(
                 $template, { fatal => $self->fatal, requires => \@requires },
-            )
-        )
+            ),
+        ),
     );
     return;
 }
@@ -95,6 +83,8 @@ __PACKAGE__->meta->make_immutable();
 no Moose;
 1;
 
+# ABSTRACT: make dists require external commands
+
 __END__
 
 =pod
@@ -110,7 +100,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 =head1 VERSION
 
-version 1.001
+version 1.002
 
 =head1 SYNOPSIS
 
@@ -162,13 +152,16 @@ Using this plugin will add L<Test::Most|Test::Most> and L<Env::Path|Env::Path>
 to your distribution's testing prerequisites since the generated script uses
 those modules.
 
-=for Pod::Coverage mvp_multivalue_args
+=for test_synopsis 1;
+__END__
 
 =head1 SEE ALSO
 
 This module was indirectly inspired by
 L<Module::Install::External's requires_external_bin|Module::Install::External/requires_external_bin>
 command.
+
+=for Pod::Coverage mvp_multivalue_args
 
 =head1 SUPPORT
 

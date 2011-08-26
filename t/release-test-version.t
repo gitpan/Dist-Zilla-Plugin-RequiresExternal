@@ -1,3 +1,4 @@
+#!/usr/bin/perl
 
 BEGIN {
     unless ( $ENV{RELEASE_TESTING} ) {
@@ -7,13 +8,14 @@ BEGIN {
     }
 }
 
+use 5.006;
 use strict;
 use warnings;
-
 use Test::More;
 
-eval "use Test::ConsistentVersion";
-plan skip_all => "Test::ConsistentVersion required for this test"
+eval "use Test::Version 0.04";
+plan skip_all => "Test::Version 0.04 required for testing versions"
     if $@;
 
-Test::ConsistentVersion::check_consistent_versions();
+version_all_ok();
+done_testing;

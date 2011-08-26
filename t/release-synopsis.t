@@ -10,7 +10,7 @@ BEGIN {
 
 use Test::More;
 
-eval "use Test::Vars";
-plan skip_all => "Test::Vars required for testing unused vars"
+eval "use Test::Synopsis";
+plan skip_all => "Test::Synopsis required for testing synopses"
     if $@;
-all_vars_ok();
+all_synopsis_ok('lib');

@@ -1,14 +1,4 @@
 #!perl
-#
-# This file is part of Dist-Zilla-Plugin-RequiresExternal
-#
-# This software is copyright (c) 2011 by GSI Commerce.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
-use utf8;
-use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 use strict;
 use warnings;
@@ -41,6 +31,12 @@ if ( -d 'bin' ) {
             my $found = $File::Find::name;
 
             # nothing to skip
+            open my $FH, '<', $_ or do {
+                note("Unable to open $found in ( $! ), skipping");
+                return;
+            };
+            my $shebang = <$FH>;
+            return unless $shebang =~ /^#!.*?\bperl\b\s*$/;
             push @scripts, $found;
         },
         'bin',
