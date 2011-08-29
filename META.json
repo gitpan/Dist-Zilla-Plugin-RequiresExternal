@@ -44,6 +44,7 @@
          "requires" : {
             "Carp" : 0,
             "Config" : 0,
+            "Env::Path" : 0,
             "File::Find" : 0,
             "File::Temp" : 0,
             "Scalar::Util" : 0,
@@ -61,13 +62,13 @@
       "bugtracker" : {
          "web" : "https://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal/issues"
       },
-      "homepage" : "http://search.cpan.org/dist/Dist-Zilla-Plugin-RequiresExternal/",
+      "homepage" : "http://metacpan.org/release/Dist-Zilla-Plugin-RequiresExternal/",
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal.git",
          "web" : "https://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal"
       }
    },
-   "version" : "1.003"
+   "version" : "1.004"
 }
 

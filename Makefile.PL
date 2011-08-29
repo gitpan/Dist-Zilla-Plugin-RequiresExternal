@@ -14,6 +14,7 @@ my %WriteMakefileArgs = (
   "BUILD_REQUIRES" => {
     "Carp" => 0,
     "Config" => 0,
+    "Env::Path" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
     "Scalar::Util" => 0,
@@ -49,7 +50,7 @@ my %WriteMakefileArgs = (
     "namespace::autoclean" => 0,
     "utf8" => 0
   },
-  "VERSION" => "1.003",
+  "VERSION" => "1.004",
   "test" => {
     "TESTS" => "t/*.t"
   }

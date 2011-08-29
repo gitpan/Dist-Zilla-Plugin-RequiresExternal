@@ -3,7 +3,7 @@ package Dist::Zilla::Plugin::RequiresExternal;
 use utf8;
 use Modern::Perl;
 
-our $VERSION = '1.003';    # VERSION
+our $VERSION = '1.004';    # VERSION
 
 use English '-no_match_vars';
 use Moose;
@@ -31,7 +31,10 @@ has _requires => ( ro, lazy,
 has fatal => ( ro, required, isa => Maybe [Bool], default => 0 );
 
 sub gather_files {
-    my $self     = shift;
+    my $self = shift;
+
+    # @{$requires[0]} will contain any non-absolute paths to look for in $PATH
+    # @{$requires[1]} will contain any absolute paths
     my @requires = part { file($ARG)->is_absolute() } @{ $self->_requires };
     my $template = <<'END_TEMPLATE';
 #!perl
@@ -100,7 +103,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 =head1 VERSION
 
-version 1.003
+version 1.004
 
 =head1 SYNOPSIS
 
